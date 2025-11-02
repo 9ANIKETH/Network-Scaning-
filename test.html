@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f4f6f8;
+      overflow: hidden; /* 👈 stop scroll */
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 20px;
+      padding: 80px 20px 20px;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    /* LEFT BIG BOX */
+    .left-box {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      transition: 0.3s;
+    }
+
+    .left-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    /* RIGHT SMALL BOXES */
+    .right-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .small-box {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .small-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .small-box h3 {
+      margin: 10px 0;
+      color: #333;
+      font-size: 20px;
+    }
+
+    .small-box p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* ✅ Special styling for Learn Basic */
+    #learnBasicBox {
+      background: linear-gradient(135deg, #e3f2fd, #f1f8e9);
+      color: #333;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    #learnBasicBox:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #444;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    #greekData {
+      margin-top: 15px;
+      background: #ffffffb0;
+      border-radius: 12px;
+      padding: 15px;
+      font-size: 15px;
+      color: #333;
+      text-align: left;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+    }
+
+    @media (max-width: 900px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar will load here -->
+  <div id="navbar"></div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard">
+    <!-- LEFT BIG BOX -->
+    <div class="left-box">
+      <h2>Performance Overview</h2>
+      <p>Track your learning progress, project performance, and weekly growth summary here.</p>
+    </div>
+
+    <!-- RIGHT SMALL BOXES -->
+    <div class="right-boxes">
+      <div class="small-box" id="learnBasicBox">
+        <h3>Learn Basic</h3>
+        <div class="subtitle">Explore beginner-level Greek knowledge 👇</div>
+        <div class="greek-data" id="greekData">Loading data...</div>
+      </div>
+
+      <div class="small-box">
+        <h3>Learn Advance</h3>
+        <p>Explore advanced networking, AI, and programming systems.</p>
+      </div>
+
+      <div class="small-box">
+        <h3>Learn Tools</h3>
+        <p>Use essential tools and utilities for software building.</p>
+      </div>
+
+      <div class="small-box">
+        <h3>Scanning</h3>
+        <p>Learn about networking scans, ports, and penetration basics.</p>
+      </div>
+
+      <div class="small-box">
+        <h3>Practice</h3>
+        <p>Do practical exercises to improve technical performance.</p>
+      </div>
+
+      <div class="small-box">
+        <h3>Test Webs List</h3>
+        <p>Manage and test your hosted or local web projects.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script to load navbar.html -->
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+      })
+      .catch(error => console.error("Failed to load navbar:", error));
+  </script>
+
+  <!-- ✅ Greek Data Script -->
+  <script>
+   fetch("https://api.greek.com/data")
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("greekData").innerHTML = data.info;
+  })
+  .catch(error => console.error("Failed to fetch Greek data:", error));
+
+
+  </script>
+</body>
+</html>

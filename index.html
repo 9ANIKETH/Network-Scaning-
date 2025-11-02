@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance Dashboard</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <!-- Navbar will load here -->
+  <div id="navbar"></div>
+
+  <!-- Dashboard -->
+  <div class="dashboard">
+    <div class="left-box">
+      <h2>Performance Overview</h2>
+      <p>Here you can see overall project progress, learning performance, and analytics summary.</p>
+    </div>
+
+    <div class="right-boxes">
+      <div class="small-box">
+        <h3>Learn Basic</h3>
+        <p>Start with beginner-friendly topics and concepts.</p>
+      </div>
+      <div class="small-box">
+        <h3>Learn Advance</h3>
+        <p>Deep dive into advanced programming and AI topics.</p>
+      </div>
+      <div class="small-box">
+        <h3>Learn Tools</h3>
+        <p>Explore important development tools.</p>
+      </div>
+      <div class="small-box">
+        <h3>Scanning</h3>
+        <p>Work with scanning, testing methods.</p>
+      </div>
+      <div class="small-box">
+        <h3>Practice</h3>
+        <p>Do hands-on pratice and Learn .</p>
+      </div>
+      <div class="small-box">
+        <h3>Test Webs List</h3>
+        <p>Access your test or live website list here.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script to load navbar.html -->
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+      })
+      .catch(error => console.error("Failed to load navbar:", error));
+  </script>
+</body>
+</html>

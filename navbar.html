@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Navbar UI</title>
+  <link rel="stylesheet" href="navbar.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="icon/network.png" alt="Logo" />
+      <span>Network Learning</span>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Search anything..." />
+      <button><img src="icon/searchicon.png" alt="Search" /></button>
+    </div>
+
+    <div class="nav-icons">
+      <div class="icon-box">
+        <img src="icon/alert.ico" alt="Alert" />
+        <span class="badge">2</span>
+      </div>
+
+      <div class="icon-box">
+        <img src="icon/notification2.png" alt="Notification" />
+        <span class="badge">5</span>
+      </div>
+
+      <div class="admin" id="adminBtn">
+        <img src="icon/login.png" alt="Admin" />
+        <div class="admin-menu" id="adminMenu">
+          <div class="item">Profile</div>
+          <div class="item">Settings</div>
+          <div class="item">Logout</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    const adminBtn = document.getElementById('adminBtn');
+    const adminMenu = document.getElementById('adminMenu');
+
+    adminBtn.addEventListener('click', () => {
+      adminMenu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!adminBtn.contains(e.target)) {
+        adminMenu.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
